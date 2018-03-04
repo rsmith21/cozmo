@@ -9,7 +9,7 @@
 import asyncio
 import cozmo
 from cozmo.objects import LightCube1Id, LightCube2Id, LightCube3Id
-#from cozmo.objects import LightCube1Id_battery_str
+
 async def log_cube_info(robot: cozmo.robot.Robot, cube_id):
     cube = robot.world.get_light_cube(cube_id)
     if cube is not None:
@@ -33,14 +33,14 @@ async def log_cube_info(robot: cozmo.robot.Robot, cube_id):
 
 async def cozmo_program(robot: cozmo.robot.Robot):
     
-    print("My internal Battery Voltage Currently is: %s" % robot.battery_voltage)
+    print("My internal Battery Voltage Currently is: %.3f" % robot.battery_voltage)
     
     
     
     await log_cube_info(robot, LightCube1Id)  # looks like a paperclip
     await log_cube_info(robot, LightCube2Id)  # looks like a lamp / heart
     await log_cube_info(robot, LightCube3Id)  # looks like the letters 'ab' over 'T'
-    
+    await robot.say_text ("My internal Battery Voltage Currently is: %.3f Volts" % robot.battery_voltage,).wait_for_completed()
 
 cozmo.robot.Robot.drive_off_charger_on_connect = False
 
