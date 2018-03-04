@@ -3,7 +3,8 @@
 # and Cozmo will speak alout  the cube's battery percentage capacity remaining.
 # I have still to find out at what point the cube batteries fail
 # Bob 25th Feb 2018
-
+# This is Version 2 Change is that the internal battery voltage now only reports to 3 decimal places for brevity.
+# Bob 04th Mar 2018
 
 
 import asyncio
